@@ -1,15 +1,19 @@
 <?php
 //session start
 session_start();
-//this is our controller
 //turn on error reporting
-ini_set('display_errors', 1);
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 //require autoload file
 require_once('vendor/autoload.php');
 
 //create instance of the base class
 $f3 = Base::instance();
+
+//Set debug level
+$f3->set('DEBUG', 3);
 
 //define a default route
 $f3->route('GET /', function(){
@@ -19,13 +23,13 @@ $f3->route('GET /', function(){
     echo "<a href = 'order'>Order a Pet</a>";
 });
 
-$f3->route('GET /order', function(){
+$f3->route('GET|POST /order', function(){
     $view = new Template();
 
     echo $view->render('views/form1.html');
 });
 
-$f3->route('POST /order2', function(){
+$f3->route('GET|POST /order2', function(){
     $view = new Template();
 
     $_SESSION ['animal'] = $_POST['animal'];
