@@ -8,6 +8,7 @@ ini_set('display_errors', 1);
 
 //require autoload file
 require_once('vendor/autoload.php');
+require_once('model/validation-functions.php');
 
 //create instance of the base class
 $f3 = Base::instance();
@@ -25,9 +26,21 @@ $f3->route('GET /', function(){
     echo "<a href = 'order'>Order a Pet</a>";
 });
 
-$f3->route('GET|POST /order', function(){
-    $view = new Template();
+$f3->route('GET|POST /order', function($f3){
+    session_unset();
 
+    if (isset($_POST['animal'])){
+        $animal = $_POST['animal'];
+
+        if (validString($animal)) {
+            $_SESSION['animal'] = $animal;
+            $f3->reroute('/order2');
+        } else {
+            $f3->set("errors['animal']", "Please enter an animal.");
+        }
+    }
+
+    $view = new Template();
     echo $view->render('views/form1.html');
 });
 
