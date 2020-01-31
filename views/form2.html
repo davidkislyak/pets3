@@ -15,12 +15,11 @@
     <form method ="Post" action ="results">
         <label>
             Color:
-            <select name='color'>
+            <select class = "form-control" name='color'>
                 <option>Pick a Color</option>
-                <option>Red</option>
-                <option>Yellow</option>
-                <option>Blue</option>
-                <option>Green</option>
+              <repeat group="{{ @colors }}" value ="{{ @colorOption}}">
+                  <option>{{ @colorOption }}</option>
+              </repeat>
             </select>
             <button type ="submit">Submit</button>
         </label>
