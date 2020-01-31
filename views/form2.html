@@ -13,6 +13,11 @@
 </head>
 <body>
     <form method ="post" action ="#">
+        <div class = "col-sm-3">
+            <check if="{{ isset(@errors['color']) }}">
+                <p>{{ @errors['color']}}</p>
+            </check>
+        </div>
         <label>
             Color:
             <select class = "form-control" name='color'>

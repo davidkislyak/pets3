@@ -14,6 +14,11 @@
 <body>
 
     <form method ="post" action ="#">
+        <div class = "col-sm-3">
+            <check if="{{ isset(@errors['animal']) }}">
+                <p>{{ @errors['color'] }}</p>
+            </check>
+        </div>
         <label>
             Animal:
             <input type ="text" name ="animal">
