@@ -20,13 +20,13 @@
         </div>
         <label>
             Color:
-            <select class = "form-control" name='color'>
-                <option>Pick a Color</option>
-              <repeat group="{{ @colors }}" value ="{{ @colorOption}}">
-                  <option>{{ @colorOption }}</option>
-              </repeat>
+            <select class="form-control" name="color" id="color">
+                <option>--Select--</option>
+                <repeat group="{{ @colors }}" value="{{ @colorOption }}">
+                    <option> {{ @colorOption }}</option>
+                </repeat>
             </select>
-            <button type ="submit">Submit</button>
+            <button type ="submit" value = "submit" name = "submit">Submit</button>
         </label>
     </form>
 </body>
